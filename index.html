@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio de Martín Carossino — Data Analyst y Backend Developer. SQL, Python, Power BI. Buenos Aires, AR.">
+<meta property="og:title" content="Martín Carossino — Data Analyst">
+<meta property="og:description" content="Portfolio de proyectos en Data Analytics, SQL y Backend Development. Buenos Aires, AR.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og_preview.jpg">
+<meta property="og:url" content="https://martincarossino.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Martín Carossino — Data Analyst">
+<meta name="twitter:description" content="Portfolio de proyectos en Data Analytics, SQL y Backend Development. Buenos Aires, AR.">
+<meta name="twitter:image" content="og_preview.jpg">
+<title>Martín Carossino — Data Analyst</title>
+
+<!-- Favicon: generado a partir de icono.png, en varios tamaños -->
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- Preconnect: googleapis.com sirve el CSS, gstatic.com sirve los archivos de fuente en sí.
+     Sin este segundo preconnect, el navegador recién abre la conexión a gstatic cuando
+     ya leyó el CSS de fuentes, perdiendo tiempo en el primer render del texto. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+
+<!-- JSON-LD: le dice a Google explícitamente "esta página es la persona X, con este rol,
+     en esta ciudad, con estos perfiles". No cambia nada visual, es solo para buscadores. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Martín Carossino",
+  "jobTitle": "Data Analyst & Backend Developer",
+  "url": "https://martincarossino.github.io/",
+  "image": "https://martincarossino.github.io/icono.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/martincarossino",
+    "https://github.com/MartinCarossino"
+  ]
+}
+</script>
+
+<style>
+/* Variables */
+:root {
+  --bg:        #F2EFE9;
+  --bg2:       #E8E3D8;
+  --bg3:       #DEDAD0;
+  --papel:     #FAF8F4;
+  --tinta:     #1C1916;
+  --tinta2:    #4B4640;
+  --tinta3:    #9A9490;
+  --negro:     #0F0D0B;
+  --acento:    #C8421A;
+  --acento2:   #E8A020;
+  --acento-l:  rgba(200,66,26,.10);
+  --acento-b:  rgba(200,66,26,.22);
+  --verde:     #2D7A4F;
+  --borde:     rgba(28,25,22,.10);
+  --borde-f:   rgba(28,25,22,.18);
+  --display:   'DM Serif Display', Georgia, serif;
+  --mono:      'Space Mono', monospace;
+  --sans:      'DM Sans', system-ui, sans-serif;
+  --r:         4px;
+  --r-lg:      10px;
+  --r-xl:      18px;
+}
+
+/* Skip link — invisible hasta que se navega con teclado (Tab) */
+.salto-enlace {
+  position: absolute; top: -40px; left: 0; z-index: 1000;
+  background: var(--acento); color: #fff;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .08em;
+  padding: .6rem 1.2rem; border-radius: 0 0 var(--r) 0;
+  transition: top .2s ease;
+}
+.salto-enlace:focus { top: 0; }
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+}
+.envoltura-sitio { overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img, video { max-width: 100%; display: block; }
+
+/* Textura de papel */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* Grilla de puntos reutilizable */
+.fondo-puntos { position: relative; }
+.fondo-puntos::before {
+  content: '';
+  position: absolute; inset: 0;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 40px 40px; pointer-events: none;
+  z-index: 0;
+}
+
+/* Wrappers de ancho máximo */
+.contenedor    { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
+.contenedor-sm { max-width:  800px; margin: 0 auto; padding: 0 2.5rem; }
+.contenedor-xl { max-width: 1440px; margin: 0 auto; padding: 0 2.5rem; }
+
+/* Animación de aparición por scroll */
+.aparece {
+  opacity: 0;
+  translate: 0 28px;
+  transition: opacity .7s ease, translate .7s ease;
+  overflow: visible !important;
+}
+.aparece.visible { opacity: 1; translate: 0 0; }
+
+/* Etiqueta de sección */
+.etiqueta-sec {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--acento); margin-bottom: 1.5rem;
+}
+.etiqueta-sec::before {
+  content: ''; display: inline-block;
+  width: 24px; height: 1px; background: var(--acento);
+}
+
+/* Título de sección */
+h2.titulo-sec {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400; line-height: 1.15; color: var(--tinta);
+  margin-bottom: 3rem;
+  padding-bottom: 0.1em;
+}
+h2.titulo-sec em { font-style: italic; color: var(--acento); }
+
+/* Etiquetas de tecnología */
+.etiqueta {
+  font-family: var(--mono); font-size: .58rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: var(--acento-l); color: var(--acento);
+  border: 1px solid var(--acento-b);
+  border-radius: 3px; padding: .2rem .65rem;
+}
+.etiqueta.gris {
+  background: rgba(28,25,22,.05); color: var(--tinta3);
+  border-color: var(--borde);
+}
+
+/* Marco de video */
+.marco-video {
+  position: relative;
+  background: var(--negro);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 2px solid var(--tinta);
+  box-shadow: 6px 6px 0 var(--tinta);
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+.marco-video:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--tinta);
+}
+.marco-video video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .85;
+}
+
+/* Marco de imagen */
+.marco-imagen {
+  position: relative;
+  background: var(--bg3);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 2px solid var(--tinta);
+  box-shadow: 5px 5px 0 var(--tinta);
+  transition: transform .25s, box-shadow .25s;
+}
+.marco-imagen:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--tinta);
+}
+.marco-imagen img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(242,239,233,.90);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--borde);
+}
+.nav-marca {
+  font-family: var(--mono); font-size: .72rem;
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tinta);
+}
+.nav-marca span { color: var(--acento); }
+
+.nav-enlaces {
+  display: flex; list-style: none; gap: 2.4rem;
+}
+.nav-enlaces a {
+  font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tinta3); transition: color .2s;
+}
+.nav-enlaces a:hover, .nav-enlaces a.activo { color: var(--acento); }
+
+.nav-punto {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #4ade80;
+  animation: pulso-verde 2.5s ease infinite;
+  flex-shrink: 0;
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 32px; height: 32px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; height: 1.5px; background: var(--tinta);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav-hamburger.abierto span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.abierto span:nth-child(2) { opacity: 0; }
+.nav-hamburger.abierto span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Menú desplegable celular */
+.nav-movil {
+  display: none;
+  position: fixed; top: 57px; left: 0; right: 0; z-index: 499;
+  background: rgba(242,239,233,.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--borde);
+  flex-direction: column;
+  padding: 1.2rem 1.5rem;
+  gap: .2rem;
+}
+.nav-movil.abierto { display: flex; }
+.nav-movil a {
+  font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tinta3); padding: .75rem .5rem;
+  border-bottom: 1px solid var(--borde);
+  transition: color .2s;
+}
+.nav-movil a:last-child { border-bottom: none; }
+.nav-movil a:hover, .nav-movil a.activo { color: var(--acento); }
+
+@keyframes pulso-verde {
+  0%,100% { box-shadow: 0 0 0 0 rgba(74,222,128,.4); }
+  50%      { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+
+/* HERO */
+#inicio {
+  padding-top: 5.5rem;
+  display: grid;
+  grid-template-rows: auto auto;
+  background: var(--negro);
+}
+#inicio .hero-cuerpo {
+  position: relative;
+  z-index: 2;
+}
+
+/* Cuerpo del hero */
+.hero-cuerpo {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 0;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
+}
+
+.hero-izq {
+  padding: 4rem 3rem 4rem 0;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  gap: 0;
+}
+
+.hero-subtitulo {
+  display: flex; align-items: center; gap: .65rem;
+  font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 1.75rem;
+}
+.hero-subtitulo-punto {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #C8421A; flex-shrink: 0;
+  animation: pulso-verde 2.5s ease infinite;
+}
+
+h1.hero-nombre {
+  font-family: var(--display);
+  font-size: clamp(3.8rem, 7.5vw, 7rem);
+  font-weight: 400; line-height: .95;
+  letter-spacing: -.02em; color: rgba(255,255,255,.9);
+  margin-bottom: 1.75rem;
+}
+h1.hero-nombre em {
+  font-style: italic; color: var(--acento);
+  display: block;
+}
+
+.hero-descripcion-bloque {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  margin-top: auto;
+}
+.hero-descripcion {
+  font-size: 1rem; color: rgba(255,255,255,.45);
+  line-height: 1.85; max-width: 380px;
+  padding-bottom: 4px;
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem;
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .04em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.hero-stats strong {
+  color: var(--acento); font-weight: 700; font-size: .85rem;
+}
+.hero-stats-sep { color: rgba(255,255,255,.18); }
+
+.hero-botones {
+  display: flex; flex-direction: row; flex-wrap: wrap; gap: .7rem;
+}
+
+/* Panel derecho - Campana de Gauss */
+.hero-gauss-panel {
+  display: flex; flex-direction: column;
+  gap: 1.2rem;
+  padding: 3rem 0.5rem 3rem 2rem;
+  align-self: stretch;
+  position: relative; z-index: 2;
+}
+
+.gauss-cabecera {
+  display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+}
+.gauss-etiqueta {
+  font-family: var(--mono); font-size: .6rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .25rem .75rem; border-radius: 3px;
+  background: rgba(200,66,26,.15);
+  border: 1px solid rgba(200,66,26,.3);
+  color: var(--acento);
+}
+.gauss-desc-pie {
+  font-family: var(--mono); font-size: .58rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.22);
+}
+.gauss-grafico-wrap {
+  flex: 1; width: 100%;
+  min-height: 160px; position: relative;
+}
+.gauss-grafico-wrap svg {
+  width: 100%; height: 100%;
+  display: block; overflow: visible;
+}
+
+/* Dados CSS 3D */
+.dado-contenedor {
+  position: absolute;
+  perspective: 600px;
+}
+.dado {
+  width: var(--size, 80px);
+  height: var(--size, 80px);
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.cara {
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: calc(var(--size) * 0.13);
+  border: 1.5px solid rgba(200,66,26,.18);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cara-bg, var(--papel));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.7),
+    inset 0 -1px 0 rgba(0,0,0,.06);
+  backface-visibility: hidden;
+}
+.cara-1 { transform: rotateY(  0deg) translateZ(calc(var(--size) / 2)); }
+.cara-2 { transform: rotateY(180deg) translateZ(calc(var(--size) / 2)); }
+.cara-3 { transform: rotateY( 90deg) translateZ(calc(var(--size) / 2)); }
+.cara-4 { transform: rotateY(-90deg) translateZ(calc(var(--size) / 2)); }
+.cara-5 { transform: rotateX( 90deg) translateZ(calc(var(--size) / 2)); }
+.cara-6 { transform: rotateX(-90deg) translateZ(calc(var(--size) / 2)); }
+
+.puntos { display: grid; width: 65%; height: 65%; }
+.puntos-1 { place-items: center; }
+.puntos-2 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.puntos-2 .d:nth-child(1) { grid-column:2; grid-row:1; place-self:center; }
+.puntos-2 .d:nth-child(2) { grid-column:1; grid-row:2; place-self:center; }
+.puntos-3 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; }
+.puntos-3 .d:nth-child(1) { grid-column:2; grid-row:1; place-self:center; }
+.puntos-3 .d:nth-child(2) { grid-column:1 / span 2; grid-row:2; place-self:center; }
+.puntos-3 .d:nth-child(3) { grid-column:1; grid-row:3; place-self:center; }
+.puntos-4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.puntos-4 .d { place-self: center; }
+.puntos-5 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; }
+.puntos-5 .d { place-self: center; }
+.puntos-5 .d:nth-child(5) { grid-column:1 / span 2; grid-row:2; }
+.puntos-6 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; }
+.puntos-6 .d { place-self: center; }
+.d {
+  width: calc(var(--size) * .115);
+  height: calc(var(--size) * .115);
+  border-radius: 50%;
+  background: var(--dot-color, var(--acento));
+  place-self: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,.18);
+}
+.dado .cara { transition: none; }
+
+.dado-1 { --size: 110px; --cara-bg: var(--papel); --dot-color: var(--acento); }
+
+.dado-1 { animation: rotar-flotar-1 9s ease-in-out infinite; }
+
+@keyframes rotar-flotar-1 {
+  0%   { transform: translateY(0px);   }
+  25%  { transform: translateY(-8px);  }
+  50%  { transform: translateY(-3px);  }
+  75%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px);   }
+}
+
+.dado-1 .dado { animation: girar-dado1 9s linear infinite; }
+
+@keyframes girar-dado1 {
+  0%   { transform: rotateX(0deg)   rotateY(0deg)   rotateZ(0deg);   }
+  100% { transform: rotateX(360deg) rotateY(480deg) rotateZ(120deg); }
+}
+
+.dados-etiqueta {
+  position: absolute;
+  bottom: 2rem; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--mono); font-size: .58rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--tinta3);
+}
+.dados-etiqueta span { color: var(--acento); }
+
+/* Botones */
+.boton {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mono); font-size: .67rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .75rem 1.5rem;
+  border-radius: var(--r); transition: all .22s; cursor: pointer;
+  white-space: nowrap;
+}
+.boton-primario {
+  background: var(--acento); color: #fff;
+  border: 1.5px solid var(--acento);
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+.boton-primario:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--tinta); }
+.boton-contorno {
+  background: transparent; color: var(--tinta);
+  border: 1.5px solid var(--borde-f);
+  box-shadow: 3px 3px 0 var(--borde-f);
+}
+.boton-contorno:hover {
+  border-color: var(--acento); color: var(--acento);
+  box-shadow: 3px 3px 0 var(--acento-b);
+  transform: translate(-1px,-1px);
+}
+.boton-contorno-claro {
+  background: transparent; color: rgba(255,255,255,.7);
+  border: 1.5px solid rgba(255,255,255,.18);
+  box-shadow: 3px 3px 0 rgba(255,255,255,.08);
+}
+.boton-contorno-claro:hover {
+  border-color: var(--acento); color: var(--acento);
+  box-shadow: 3px 3px 0 var(--acento-b);
+  transform: translate(-1px,-1px);
+}
+
+/* Sobre Mí */
+#sobre-mi {
+  padding: 0;
+}
+.bloque-num {
+  font-family: var(--display);
+  font-size: 6rem; font-style: italic;
+  color: rgba(28,25,22,.06);
+  line-height: 1; margin-bottom: -1.5rem;
+  user-select: none; pointer-events: none;
+}
+
+/* Proyectos */
+#proyectos {
+  padding: 8rem 0;
+  background: var(--bg2);
+  position: relative;
+}
+.proyectos-lista {
+  display: flex; flex-direction: column;
+  gap: 1px; background: var(--borde-f);
+  border: 1px solid var(--borde-f);
+  border-radius: var(--r-xl);
+  overflow: visible;
+}
+.proyecto-tarjeta {
+  background: var(--papel);
+  padding: 2.75rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  grid-template-areas: "texto visual";
+  gap: 3rem; align-items: center;
+  transition: background .25s;
+  overflow: visible;
+}
+.proyectos-lista > .proyecto-tarjeta:first-child { border-radius: var(--r-xl) var(--r-xl) 0 0; }
+.proyectos-lista > .proyecto-tarjeta:last-child  { border-radius: 0 0 var(--r-xl) var(--r-xl); }
+.proyecto-tarjeta:hover { background: #fff; }
+.proyecto-tarjeta.inv {
+  grid-template-columns: 1.6fr 1fr;
+  grid-template-areas: "visual texto";
+}
+.proyecto-texto       { grid-area: texto; display: flex; flex-direction: column; }
+.proyecto-visual-wrap { grid-area: visual; }
+.proyecto-num {
+  font-family: var(--display); font-style: italic;
+  font-size: 4.5rem; color: rgba(28,25,22,.06);
+  line-height: 1; margin-bottom: -.15rem;
+  pointer-events: none; user-select: none;
+  transition: color .3s;
+}
+.proyecto-tarjeta:hover .proyecto-num { color: rgba(200,66,26,.10); }
+.proyecto-etiquetas { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.proyecto-titulo {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  line-height: 1.2; color: var(--tinta);
+  margin-bottom: .75rem; overflow: visible;
+}
+.proyecto-descripcion {
+  font-size: .88rem; color: var(--tinta2); line-height: 1.75;
+  padding-bottom: 3px;
+}
+.proyecto-nota {
+  font-size: .82rem; color: var(--tinta3);
+  font-style: italic; margin-top: .5rem;
+}
+.proyecto-pie {
+  display: flex; align-items: center;
+  flex-wrap: wrap; gap: .5rem;
+  margin-top: auto; padding-top: 1.2rem;
+  border-top: 1px solid var(--borde);
+}
+.proyecto-enlace-boton {
+  font-family: var(--mono); font-size: .62rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .45rem 1rem; border-radius: var(--r);
+  border: 1.5px solid var(--borde-f); color: var(--tinta2);
+  transition: all .2s; box-shadow: 2px 2px 0 var(--borde-f);
+}
+.proyecto-enlace-boton:hover {
+  color: var(--acento); border-color: var(--acento-b);
+  box-shadow: 2px 2px 0 var(--acento-b);
+  transform: translate(-1px,-1px);
+}
+.proyecto-enlace-boton.principal {
+  background: var(--acento); color: #fff; border-color: var(--acento);
+  box-shadow: 2px 2px 0 var(--tinta);
+}
+.proyecto-enlace-boton.principal:hover {
+  transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--tinta);
+}
+.proyecto-visual-wrap .marco-video,
+.proyecto-visual-wrap .marco-imagen { aspect-ratio: 16/9; }
+
+/* Stack */
+.stack-categoria {
+  font-family: var(--sans); font-size: .75rem; font-weight: 700;
+  letter-spacing: .02em; text-transform: uppercase;
+  color: var(--tinta); margin-bottom: .45rem;
+}
+.stack-chip-claro {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .05em;
+  color: var(--tinta2);
+  background: rgba(28,25,22,.06);
+  border: 1px solid rgba(28,25,22,.13);
+  border-radius: 3px; padding: .22rem .6rem;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.stack-chip-claro:hover,
+.stack-chip-claro.stack-chip-destacado {
+  background: var(--acento-l); border-color: var(--acento-b); color: var(--acento);
+}
+.stack-nivel1 { margin-bottom: 1rem; }
+.stack-nivel1-etiqueta {
+  font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--acento); display: block; margin-bottom: .6rem;
+}
+.stack-nivel1-pills { display: flex; flex-wrap: wrap; gap: .55rem; }
+.stack-pill-principal {
+  font-family: var(--mono); font-size: .67rem;
+  font-weight: 400; letter-spacing: .08em; text-transform: uppercase;
+  padding: .75rem 1.5rem;
+  background: var(--acento); color: #fff;
+  border-radius: var(--r); border: 1.5px solid var(--acento);
+  box-shadow: 3px 3px 0 var(--tinta);
+  transition: transform .22s, box-shadow .22s;
+  cursor: default;
+}
+.stack-pill-principal:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--tinta); }
+.stack-panel-vidrio {
+  display: flex; flex-direction: column; gap: 0.9rem;
+  background: rgba(250,248,244,.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(28,25,22,.10);
+  border-radius: 14px; padding: 1.2rem 1.4rem;
+  box-shadow: 0 4px 32px rgba(28,25,22,.07);
+  width: fit-content; max-width: 68%;
+}
+
+/* Estudios */
+#estudios {
+  padding: 8rem 0;
+  background: var(--negro);
+}
+#estudios .etiqueta-sec { color: var(--acento2); }
+#estudios h2.titulo-sec { color: rgba(255,255,255,.9); }
+#estudios h2.titulo-sec em { color: var(--acento2); }
+.diplomas-grilla {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.diploma-tarjeta {
+  background: rgba(255,255,255,.03);
+  border: 1.5px solid rgba(255,255,255,.09);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s, border-color .25s;
+  cursor: default;
+}
+.diploma-tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: rgba(232,160,32,.35);
+  box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 30px rgba(232,160,32,.12);
+}
+.diploma-vista {
+  background: #fff;
+  border-right: 1px solid rgba(255,255,255,.07);
+  overflow: hidden; position: relative;
+  min-height: 240px;
+}
+.diploma-vista iframe { width: 100%; height: 100%; border: none; display: block; }
+.diploma-vista img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block; transition: transform .4s ease; box-sizing: border-box;
+}
+.diploma-tarjeta:hover .diploma-vista img { transform: scale(1.03); }
+.diploma-pendiente {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: .6rem; width: 100%; height: 100%; min-height: 240px;
+}
+.diploma-pendiente-icono { font-size: 2.8rem; opacity: .5; }
+.diploma-pendiente-txt {
+  font-family: var(--mono); font-size: .6rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(28,25,22,.35); text-align: center; padding: 0 1rem;
+}
+.diploma-lado-der {
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 2rem 2rem 1.5rem;
+}
+.diploma-info { padding: 0 0 0 1rem; border-left: 3px solid var(--acento2); flex: 1; }
+.diploma-inst {
+  font-family: var(--mono); font-size: .6rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--acento2); margin-bottom: .5rem;
+}
+.diploma-titulo {
+  font-family: var(--display); font-size: 1.3rem;
+  font-weight: 400; color: rgba(255,255,255,.88);
+  line-height: 1.25; margin-bottom: .6rem;
+}
+.diploma-anio {
+  font-family: var(--mono); font-size: .62rem;
+  color: rgba(255,255,255,.25); letter-spacing: .08em;
+}
+.diploma-btn {
+  display: block; margin-top: 1.5rem; padding: .6rem 0;
+  text-align: center;
+  font-family: var(--mono); font-size: .65rem;
+  font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-lg); text-decoration: none; transition: all .22s;
+}
+.diploma-btn:hover {
+  color: var(--acento2); border-color: rgba(232,160,32,.4);
+  background: rgba(232,160,32,.07); box-shadow: 0 0 16px rgba(232,160,32,.12);
+}
+.diploma-insignia {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--mono); font-size: .58rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: #4ade80;
+  background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.25);
+  border-radius: 3px; padding: .18rem .65rem; margin-bottom: .5rem;
+}
+.diploma-insignia::before {
+  content: ''; width: 5px; height: 5px;
+  background: #4ade80; border-radius: 50%;
+  animation: pulso-verde 2s ease infinite;
+}
+
+/* Contacto */
+#contacto {
+  padding: 8rem 0;
+  background: var(--negro);
+}
+#contacto > .contenedor { position: relative; z-index: 1; }
+.contacto-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: stretch;
+}
+.contacto-col-der { display: flex; flex-direction: column; gap: 2rem; }
+.contacto-dados-libres {
+  display: flex; flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch; padding: 2rem 0; min-height: 400px;
+}
+.dado-contacto { position: relative !important; perspective: 600px; flex-shrink: 0; }
+.dado-contacto-1 { align-self: center; margin: 0; }
+#contacto .etiqueta-sec { color: var(--acento); }
+#contacto .etiqueta-sec::before { background: var(--acento); }
+.contacto-cta {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 400; line-height: 1.0;
+  color: rgba(255,255,255,.88); margin-bottom: 1.5rem;
+}
+.contacto-cta em { font-style: italic; color: var(--acento); display: block; }
+.contacto-bajada {
+  font-size: 1rem; color: rgba(255,255,255,.38); line-height: 1.85;
+  max-width: 380px; margin-bottom: 2.5rem;
+}
+.contacto-enlaces { display: flex; flex-direction: column; gap: .8rem; }
+.contacto-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.3rem;
+  background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.09);
+  border-radius: var(--r-lg); transition: all .22s;
+  box-shadow: 2px 2px 0 rgba(0,0,0,.3);
+}
+.contacto-item:hover {
+  background: var(--acento-l); border-color: var(--acento-b);
+  transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--acento-b);
+}
+.contacto-item-interior { display: flex; align-items: center; gap: .8rem; }
+.contacto-item-icono {
+  width: 30px; height: 30px;
+  background: rgba(255,255,255,.07); border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center; font-size: .9rem;
+}
+.contacto-item-nombre {
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7);
+  display: block; transition: color .2s;
+}
+.contacto-item:hover .contacto-item-nombre { color: var(--acento); }
+.contacto-item-url { font-size: .78rem; color: rgba(255,255,255,.28); }
+.contacto-item > span { color: rgba(255,255,255,.22) !important; }
+#contacto .cara {
+  background: rgba(255,255,255,.07) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -1px 0 rgba(0,0,0,.3) !important;
+}
+#contacto .d {
+  background: var(--acento) !important;
+  box-shadow: 0 1px 4px rgba(200,66,26,.5) !important;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255,255,255,.06); background: var(--negro);
+}
+.footer-interior { display: flex; align-items: center; justify-content: space-between; }
+.footer-marca {
+  font-family: var(--mono); font-size: .65rem;
+  letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.25);
+}
+.footer-marca span { color: var(--acento); }
+.footer-cr {
+  font-family: var(--mono); font-size: .6rem;
+  color: rgba(255,255,255,.18); letter-spacing: .06em;
+}
+
+/* Responsive — Tablet */
+@media (max-width: 960px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-enlaces { gap: 1.5rem; }
+  .hero-cuerpo { grid-template-columns: 1fr; padding: 0 1.25rem; }
+  .hero-izq { padding: 4rem 2rem 3rem; border-right: none; border-bottom: 1px solid var(--borde); }
+  .hero-descripcion-bloque { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+  .hero-botones { flex-direction: row; flex-wrap: wrap; }
+  .hero-gauss-panel { display: none; }
+  .bloque-num { font-size: 4rem; }
+  .proyecto-tarjeta,
+  .proyecto-tarjeta.inv {
+    grid-template-columns: 1fr;
+    grid-template-areas: "texto" "visual";
+    padding: 2rem 2rem; gap: 1.75rem;
+  }
+  .diploma-tarjeta { grid-template-columns: 1fr; }
+  .diploma-vista { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); min-height: 220px; }
+  .contacto-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contacto-dados-libres { min-height: auto; }
+  .dado-contacto-1 { align-self: auto; margin: 0; }
+  #sobre-mi > div[style] { grid-template-columns: 1fr !important; }
+  #sobre-mi > div[style] > div:first-child > div.aparece { padding: 3rem 1.5rem 0 !important; }
+  #sobre-mi > div[style] > div:first-child > div.aparece:last-child { padding: 0 1.5rem 3rem !important; }
+  #sobre-mi > div[style] > div:last-child { border-left: none !important; border-top: 1px solid var(--borde); }
+  #sobre-mi > div[style] > div:last-child > div.aparece { padding: 3rem 1.5rem 0 !important; }
+  #sobre-mi > div[style] > div:last-child > div.aparece:last-child { padding: 0 1.5rem 2rem !important; }
+  .stack-nivel1-pills { flex-wrap: wrap; }
+  .stack-pill-principal { flex: 0 1 auto; text-align: center; }
+  .stack-panel-vidrio { max-width: 100%; width: 100%; }
+}
+
+/* Responsive — Celular */
+@media (max-width: 600px) {
+  .contenedor, .contenedor-sm { padding: 0 1.25rem; }
+  .nav-enlaces { display: none; }
+  .nav-hamburger { display: flex; }
+  .diplomas-grilla { grid-template-columns: 1fr; }
+  .proyectos-lista { border-radius: var(--r-xl); }
+  h1.hero-nombre { font-size: clamp(3rem, 14vw, 5rem); }
+  .hero-botones { flex-direction: column; }
+  .bloque-texto { padding: 3rem 1.25rem; }
+  .contacto-dados-libres { display: none; }
+  .proyecto-pie { flex-direction: column; align-items: flex-start; }
+  .stack-panel-vidrio { max-width: 100%; width: 100%; box-sizing: border-box; }
+  .stack-chip-claro { font-size: .58rem; padding: .18rem .5rem; }
+  .stack-pill-principal { padding: .65rem 1rem; font-size: .62rem; }
+}
+</style>
+</head>
+<body>
+<a href="#contenido-principal" class="salto-enlace">Saltar al contenido principal</a>
+<div class="envoltura-sitio">
+
+<!-- Nav -->
+<nav>
+  <div class="nav-marca">Martín<span>.</span>Carossino</div>
+  <ul class="nav-enlaces">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#estudios">Estudios</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Menú desplegable -->
+<div class="nav-movil" id="nav-movil">
+  <a href="#sobre-mi">Sobre mí</a>
+  <a href="#estudios">Estudios</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<!-- Contenido principal -->
+<main id="contenido-principal">
+
+<!-- Hero -->
+<section id="inicio" class="fondo-puntos">
+  <div class="hero-cuerpo">
+    <div class="hero-izq">
+      <div class="hero-subtitulo">
+        <div class="hero-subtitulo-punto"></div>
+        Data Analyst &amp; Backend Developer · Buenos Aires, AR
+      </div>
+      <h1 class="hero-nombre">
+        Martín<br>
+        <em>Carossino</em>
+      </h1>
+      <div class="hero-descripcion-bloque">
+        <p class="hero-descripcion">
+          Me interesa el punto donde el código y los datos se encuentran: construir sistemas que no solo funcionen, sino que cuenten algo.
+        </p>
+        <div class="hero-stats">
+          <span><strong>6</strong> proyectos</span>
+          <span class="hero-stats-sep">·</span>
+          <span><strong>4</strong> formaciones académicas</span>
+          <span class="hero-stats-sep">·</span>
+        </div>
+        <div class="hero-botones">
+          <a href="#proyectos" class="boton boton-primario">Proyectos →</a>
+          <a href="curriculum.pdf" download class="boton boton-contorno-claro">Descargar CV ↓</a>
+          <a href="#contacto" class="boton boton-contorno-claro">Contacto</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel derecho: distribución de Gauss -->
+    <div class="hero-gauss-panel">
+      <div class="gauss-grafico-wrap" id="gauss-grafico-wrap">
+        <svg id="gauss-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre Mí + Stack -->
+<section id="sobre-mi">
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--borde);">
+
+    <!-- Columna izquierda -->
+    <div style="display:grid;grid-template-rows:auto 1fr;">
+      <div class="aparece" style="padding:4rem 4.5rem 0;">
+        <div class="bloque-num">01</div>
+        <div class="etiqueta-sec">01 — Sobre mí</div>
+        <h2 class="titulo-sec">Del dato crudo <br><em>a la decisión</em></h2>
+      </div>
+      <div class="aparece" style="padding:0 4.5rem 6rem;">
+        <p>
+          Soy <strong>Backend Developer & Data Analyst</strong> de Buenos Aires.
+          Trabajo en <strong>Bianchi Service</strong> desde octubre de 2024, un laboratorio de calibración
+          y metrología, donde desarrollo y mantengo el sistema:
+          una plataforma interna que cubre el flujo operativo completo del laboratorio
+          — ingreso de equipos, presupuestos, órdenes de trabajo, remitos y facturación.
+        </p><br>
+        <p>
+          Actualmente profundizo en <strong>Power BI, DAX y Python</strong>,
+          combinando mi experiencia en desarrollo backend y bases de datos
+          con un enfoque cada vez más orientado a Data Analytics.
+        </p>
+      </div>
+    </div>
+
+    <!-- Columna derecha — Stack -->
+    <div class="fondo-puntos" style="background:var(--bg2);border-left:1px solid var(--borde);position:relative;overflow:hidden;display:grid;grid-template-rows:auto auto;align-content:start;">
+      <div class="aparece" style="padding:4rem 3.5rem 0;position:relative;z-index:1;">
+        <div class="bloque-num">02</div>
+        <div class="etiqueta-sec">02 — Stack</div>
+        <h2 class="titulo-sec" style="font-size:clamp(1.8rem,3vw,2.6rem)">
+          Las <em>herramientas</em><br>que utilizo
+        </h2>
+      </div>
+
+      <div class="aparece" style="padding:0 3.5rem 2.5rem;position:relative;z-index:1;align-self:start;">
+        <div class="stack-nivel1">
+          <span class="stack-nivel1-etiqueta">Habilidades principales</span>
+          <div class="stack-nivel1-pills">
+            <span class="stack-pill-principal">SQL</span>
+            <span class="stack-pill-principal">Power BI</span>
+            <span class="stack-pill-principal">Python</span>
+            <span class="stack-pill-principal">Excel</span>
+          </div>
+        </div>
+        <div class="stack-panel-vidrio">
+          <div>
+            <div class="stack-categoria">Bases de datos</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+              <span class="stack-chip-claro">MySQL</span>
+              <span class="stack-chip-claro">Modelado relacional</span>
+              <span class="stack-chip-claro">Optimización de consultas</span>
+            </div>
+          </div>
+          <div>
+            <div class="stack-categoria">Datos e Inteligencia de Negocio</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+              <span class="stack-chip-claro">DAX</span>
+              <span class="stack-chip-claro">Power Query</span>
+              <span class="stack-chip-claro">Pandas</span>
+              <span class="stack-chip-claro">Matplotlib</span>
+              <span class="stack-chip-claro">Chart.js</span>
+            </div>
+          </div>
+          <div>
+            <div class="stack-categoria">Desarrollo Backend</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+              <span class="stack-chip-claro">PHP</span>
+              <span class="stack-chip-claro">AJAX</span>
+              <span class="stack-chip-claro">REST API</span>
+            </div>
+          </div>
+          <div>
+            <div class="stack-categoria">Herramientas</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+              <span class="stack-chip-claro">Git</span>
+              <span class="stack-chip-claro">GitHub</span>
+              <span class="stack-chip-claro">Bootstrap</span>
+              <span class="stack-chip-claro">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Estudios y diplomas -->
+<section id="estudios" class="fondo-puntos">
+  <div class="contenedor">
+    <div class="aparece" style="margin-bottom:3rem;position:relative;z-index:1;">
+      <div class="etiqueta-sec">03 — Estudios y certificaciones</div>
+      <h2 class="titulo-sec">Formación <em>académica</em></h2>
+    </div>
+  </div>
+  <div class="contenedor-xl">
+    <div class="diplomas-grilla" style="position:relative;z-index:1;">
+
+      <div class="diploma-tarjeta aparece">
+        <div class="diploma-vista">
+          <img src="Titulo_Universitario.jpg" loading="lazy" alt="Título Universitario en Programación">
+        </div>
+        <div class="diploma-lado-der">
+          <div class="diploma-info">
+            <div class="diploma-inst">UTN — Universidad Tecnológica Nacional</div>
+            <div class="diploma-titulo">Tecnicatura Universitaria en Programación</div>
+            <div class="diploma-anio">Mar. 2025 · Desarrollo web · Bases de datos</div>
+          </div>
+          <a href="Titulo_Universitario.jpg" target="_blank" rel="noopener noreferrer" class="diploma-btn">Ver diploma ↗</a>
+        </div>
+      </div>
+
+      <div class="diploma-tarjeta aparece">
+        <div class="diploma-vista">
+          <img src="Diplomatura_Bases_Datos.jpg" loading="lazy" alt="Diplomatura en Bases de Datos">
+        </div>
+        <div class="diploma-lado-der">
+          <div class="diploma-info">
+            <div class="diploma-inst">UTN — Universidad Tecnológica Nacional</div>
+            <div class="diploma-titulo">Diplomatura en Bases de Datos</div>
+            <div class="diploma-anio">Feb. 2025 · Modelado relacional · SQL avanzado · Bases in-memory</div>
+          </div>
+          <a href="https://validator.centrodeelearning.com/validator/Maq4EfwaSk" target="_blank" rel="noopener noreferrer" class="diploma-btn">Ver certificado ↗</a>
+        </div>
+      </div>
+
+      <div class="diploma-tarjeta aparece">
+        <div class="diploma-vista">
+          <img src="Diplomatura_Data_Engineering.jpg" loading="lazy" alt="Diplomatura en Data Engineering">
+        </div>
+        <div class="diploma-lado-der">
+          <div class="diploma-info">
+            <div class="diploma-inst">UTN — Universidad Tecnológica Nacional</div>
+            <div class="diploma-titulo">Diplomatura en Data Engineering</div>
+            <div class="diploma-anio">Sep. 2025 · Python · Pandas · PostgreSQL · Apache Kafka</div>
+          </div>
+          <a href="https://validator.centrodeelearning.com/validator/RJ3uAO6IpL" target="_blank" rel="noopener noreferrer" class="diploma-btn">Ver certificado ↗</a>
+        </div>
+      </div>
+
+      <div class="diploma-tarjeta aparece">
+        <div class="diploma-vista">
+          <div class="diploma-pendiente">
+            <div class="diploma-pendiente-txt">Cursando actualmente</div>
+          </div>
+        </div>
+        <div class="diploma-lado-der">
+          <div class="diploma-info">
+            <div class="diploma-inst">En curso</div>
+            <div class="diploma-inst">Mundos E · Aval FCEFyN — UNC</div>
+            <div class="diploma-titulo">Certificación en Data Analytics</div>
+            <div class="diploma-anio">2026 · Excel · Power BI · SQL · Python · IA</div>
+          </div>
+          <span class="diploma-btn" style="opacity:.35;cursor:default;pointer-events:none;">Certificado pendiente</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Proyectos -->
+<section id="proyectos">
+  <div class="contenedor">
+    <div class="aparece" style="margin-bottom:3rem">
+      <div class="etiqueta-sec">04 — Proyectos</div>
+      <h2 class="titulo-sec">Lo que <em>construí</em></h2>
+    </div>
+
+      <div class="proyectos-lista">
+
+      <!-- Análisis de Películas TMDB -->
+      <div class="proyecto-tarjeta aparece">
+        <div class="proyecto-texto">
+          <div class="proyecto-num">01</div>
+          <div class="proyecto-etiquetas">
+            <span class="etiqueta">Python</span>
+            <span class="etiqueta">Pandas</span>
+            <span class="etiqueta">SQLAlchemy</span>
+            <span class="etiqueta">scikit-learn</span>
+            <span class="etiqueta">Seaborn</span>
+          </div>
+          <div class="proyecto-titulo">Análisis de Películas TMDB</div>
+          <p class="proyecto-descripcion">
+            Cruce real de dos fuentes (datos financieros y reparto/equipo) sobre 4.800+
+            películas, con el mismo join verificado en pandas y en SQL puro vía SQLAlchemy.
+            El ROI promedio por género resulta engañoso por outliers extremos — la mediana
+            cuenta una historia muy distinta sobre qué géneros realmente rinden mejor.
+          </p>
+          <div class="proyecto-pie">
+            <a href="https://colab.research.google.com/github/MartinCarossino/analisis-peliculas-tmdb/blob/main/analisis_peliculas_tmdb.ipynb"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton principal">
+              Abrir en Colab →
+            </a>
+            <a href="https://github.com/MartinCarossino/analisis-peliculas-tmdb"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton">
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proyecto-visual-wrap">
+          <div class="marco-imagen">
+            <img src="peliculas_screenshot.png" loading="lazy" alt="Análisis de Películas TMDB — distribución de rating por género">
+          </div>
+        </div>
+      </div>
+
+      <!-- Scoring de Riesgo Crediticio -->
+      <div class="proyecto-tarjeta inv aparece">
+        <div class="proyecto-texto">
+          <div class="proyecto-num">02</div>
+          <div class="proyecto-etiquetas">
+            <span class="etiqueta">Python</span>
+            <span class="etiqueta">Pandas</span>
+            <span class="etiqueta">scikit-learn</span>
+            <span class="etiqueta">Matplotlib</span>
+          </div>
+          <div class="proyecto-titulo">Scoring de Riesgo Crediticio</div>
+          <p class="proyecto-descripcion">
+            Modelo de regresión logística para predecir default en clientes de tarjetas
+            de crédito, sobre el dataset público de UCI (30.000 clientes). Más allá del
+            accuracy: análisis de precision/recall, ajuste de umbral de decisión, e
+            interpretación de coeficientes con sus límites por multicolinealidad.
+          </p>
+          <div class="proyecto-pie">
+            <a href="https://colab.research.google.com/github/MartinCarossino/scoring-riesgo-crediticio/blob/main/notebook/scoring_riesgo_crediticio.ipynb"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton principal">
+              Abrir en Colab →
+            </a>
+            <a href="https://github.com/MartinCarossino/scoring-riesgo-crediticio"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton">
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proyecto-visual-wrap">
+          <div class="marco-imagen">
+            <img src="scoring_screenshot.png" loading="lazy" alt="Scoring de Riesgo Crediticio — matriz de confusión y coeficientes del modelo">
+          </div>
+        </div>
+      </div>
+
+      <!-- Análisis de Ventas de Videojuegos -->
+      <div class="proyecto-tarjeta aparece">
+        <div class="proyecto-texto">
+          <div class="proyecto-num">03</div>
+          <div class="proyecto-etiquetas">
+            <span class="etiqueta">Python</span>
+            <span class="etiqueta">Pandas</span>
+            <span class="etiqueta">Matplotlib</span>
+            <span class="etiqueta">Seaborn</span>
+          </div>
+          <div class="proyecto-titulo">Análisis de Ventas Globales de Videojuegos</div>
+          <p class="proyecto-descripcion">
+            EDA sobre 16.000+ títulos (1980–2016): qué géneros y plataformas dominaron,
+            por qué Xbox 360 nunca conquistó Japón mientras Nintendo sí, y cómo una
+            estrategia de catálogo chico pero exitoso supera al volumen puro. Limpieza
+            de nulos, agregaciones con groupby/agg y visualización en escala logarítmica.
+          </p>
+          <div class="proyecto-pie">
+            <a href="https://colab.research.google.com/github/MartinCarossino/analisis-ventas-videojuegos/blob/main/notebook/analisis_ventas_videojuegos.ipynb"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton principal">
+              Abrir en Colab →
+            </a>
+            <a href="https://github.com/MartinCarossino/analisis-ventas-videojuegos"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton">
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proyecto-visual-wrap">
+          <div class="marco-imagen">
+            <img src="videojuegos_screenshot.png" loading="lazy" alt="Análisis de Ventas de Videojuegos — ventas por género y plataforma">
+          </div>
+        </div>
+      </div>
+
+      <!-- Índice del Tanque Lleno -->
+      <div class="proyecto-tarjeta inv aparece">
+        <div class="proyecto-texto">
+          <div class="proyecto-num">04</div>
+          <div class="proyecto-etiquetas">
+            <span class="etiqueta">Python</span>
+            <span class="etiqueta">Pandas</span>
+            <span class="etiqueta">Matplotlib</span>
+            <span class="etiqueta">Seaborn</span>
+          </div>
+          <div class="proyecto-titulo">Índice del Tanque Lleno</div>
+          <p class="proyecto-descripcion">
+            ¿Cuánto vale un día de trabajo en nafta? Análisis del poder adquisitivo real en Argentina (2017–2026)
+            cruzando datos de Secretaría de Energía, INDEC, SMVM y BCRA.
+            El precio nominal se multiplicó por 83 — pero en términos reales, la nafta es un 18.8% más barata que hace nueve años.
+          </p>
+          <div class="proyecto-pie">
+            <a href="https://colab.research.google.com/github/MartinCarossino/indice-tanque-lleno/blob/main/tanque_lleno.ipynb"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton principal">
+              Abrir en Colab →
+            </a>
+            <a href="https://github.com/MartinCarossino/indice-tanque-lleno"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton">
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proyecto-visual-wrap">
+          <div class="marco-imagen">
+            <img src="tanque_screenshot.png" loading="lazy" alt="Índice del Tanque Lleno — gráfico de litros por día de salario mínimo">
+          </div>
+        </div>
+      </div>
+
+      <!-- Cacao Analytics -->
+      <div class="proyecto-tarjeta aparece">
+        <div class="proyecto-texto">
+          <div class="proyecto-num">05</div>
+          <div class="proyecto-etiquetas">
+            <span class="etiqueta">PHP</span>
+            <span class="etiqueta">MySQL</span>
+            <span class="etiqueta">JavaScript</span>
+            <span class="etiqueta">Chart.js</span>
+            <span class="etiqueta">Bootstrap</span>
+          </div>
+          <div class="proyecto-titulo">Cacao Analytics</div>
+          <p class="proyecto-descripcion">
+            Dashboard analítico para una chocolatera ficticia con toda la lógica
+            resuelta en SQL: self-JOINs acumulados, análisis de Pareto y KPIs
+            en tiempo real vía AJAX. 3 de 12 proveedores concentran el 80% del
+            volumen — detectado directamente en la consulta, sin postprocesamiento.
+          </p>
+          <div class="proyecto-pie">
+            <a href="https://cacaoanalytics.html-5.me/"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton principal">
+              Ver en vivo →
+            </a>
+            <a href="https://github.com/MartinCarossino/cacao-analytics"
+               target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton">
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proyecto-visual-wrap">
+          <div class="marco-video">
+            <video src="web_cacao.mp4" poster="web_cacao_poster.jpg" autoplay muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sistema Bianchi Service -->
+      <div class="proyecto-tarjeta inv aparece">
+        <div class="proyecto-texto">
+          <div class="proyecto-num">06</div>
+          <div class="proyecto-etiquetas">
+            <span class="etiqueta">PHP</span>
+            <span class="etiqueta">MySQL</span>
+            <span class="etiqueta">JavaScript</span>
+            <span class="etiqueta">Chart.js</span>
+            <span class="etiqueta">AJAX</span>
+            <span class="etiqueta">Bootstrap</span>
+          </div>
+          <div class="proyecto-titulo">Sistema Bianchi Service</div>
+          <p class="proyecto-descripcion">
+            Plataforma interna de gestión para un laboratorio de metrología y calibración.
+            Incluye órdenes de trabajo, remitos, facturación y módulo de usuarios con control
+            de permisos granular. El sitio web institucional del cliente también fue desarrollado
+            por mí con HTML, CSS y Bootstrap.
+          </p>
+          <p class="proyecto-nota">
+            El sistema es de uso interno y acceso privado. El enlace dirige al sitio web institucional.
+          </p>
+          <div class="proyecto-pie">
+            <a href="https://www.bianchiservice.com.ar/" target="_blank" rel="noopener noreferrer" class="proyecto-enlace-boton principal">
+              Sitio web ↗
+            </a>
+          </div>
+        </div>
+        <div class="proyecto-visual-wrap">
+          <div class="marco-video">
+            <video src="web_bianchi.mp4" poster="web_bianchi_poster.jpg" autoplay muted loop playsinline preload="none"></video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="fondo-puntos">
+  <div class="contenedor">
+    <div class="contacto-grid">
+      <div class="aparece">
+        <div class="etiqueta-sec">05 — Contacto</div>
+        <div class="contacto-cta">
+          ¿Tenés un proyecto<br>que necesita<br><em>análisis?</em>
+        </div>
+        <p class="contacto-bajada">
+          Estoy disponible para roles en Data Analytics, posiciones de Backend
+          con foco en datos, o proyectos donde SQL y visualización sean protagonistas.
+        </p>
+        <div class="contacto-enlaces">
+          <a href="https://linkedin.com/in/martincarossino" target="_blank" rel="noopener noreferrer" class="contacto-item aparece">
+            <div class="contacto-item-interior">
+              <div class="contacto-item-icono">💼</div>
+              <div>
+                <span class="contacto-item-nombre">LinkedIn</span>
+                <div class="contacto-item-url">linkedin.com/in/martincarossino</div>
+              </div>
+            </div>
+            <span style="color:var(--tinta3);font-family:var(--mono);font-size:.8rem">↗</span>
+          </a>
+          <a href="https://github.com/MartinCarossino" target="_blank" rel="noopener noreferrer" class="contacto-item aparece">
+            <div class="contacto-item-interior">
+              <div class="contacto-item-icono">🐙</div>
+              <div>
+                <span class="contacto-item-nombre">GitHub</span>
+                <div class="contacto-item-url">github.com/MartinCarossino</div>
+              </div>
+            </div>
+            <span style="color:var(--tinta3);font-family:var(--mono);font-size:.8rem">↗</span>
+          </a>
+          <a href="mailto:martingcarossino@gmail.com" class="contacto-item aparece">
+            <div class="contacto-item-interior">
+              <div class="contacto-item-icono">✉️</div>
+              <div>
+                <span class="contacto-item-nombre">Email</span>
+                <div class="contacto-item-url">martingcarossino@gmail.com</div>
+              </div>
+            </div>
+            <span style="color:var(--tinta3);font-family:var(--mono);font-size:.8rem">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contacto-col-der">
+        <div class="contacto-dados-libres aparece" id="dados-contacto">
+          <!-- Los dados se generan por JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+</main>
+<!-- /Contenido principal -->
+
+<footer>
+  <div class="contenedor">
+    <div class="footer-interior">
+      <div class="footer-marca">Martín<span>.</span>Carossino</div>
+      <div class="footer-cr">© 2026 · Buenos Aires, AR</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* Generador de dados reutilizable */
+function crearDado() {
+  const dado = document.createElement('div');
+  dado.className = 'dado';
+  const configPuntos = {
+    1: [null],
+    2: [null, null],
+    3: [null, null, null],
+    4: [null, null, null, null],
+    5: [null, null, null, null, null],
+    6: [null, null, null, null, null, null],
+  };
+  for (let numCara = 1; numCara <= 6; numCara++) {
+    const cara = document.createElement('div');
+    cara.className = `cara cara-${numCara}`;
+    const puntosDiv = document.createElement('div');
+    puntosDiv.className = `puntos puntos-${numCara}`;
+    configPuntos[numCara].forEach(() => {
+      const punto = document.createElement('div');
+      punto.className = 'd';
+      puntosDiv.appendChild(punto);
+    });
+    cara.appendChild(puntosDiv);
+    dado.appendChild(cara);
+  }
+  return dado;
+}
+
+function insertarDados(contenedorId, config) {
+  const cont = document.getElementById(contenedorId);
+  if (!cont) return;
+  config.forEach(({ clasesContenedor }) => {
+    const contenedor = document.createElement('div');
+    contenedor.className = 'dado-contenedor ' + clasesContenedor;
+    contenedor.appendChild(crearDado());
+    cont.appendChild(contenedor);
+  });
+}
+
+insertarDados('dados-contacto', [
+  { clasesContenedor: 'dado-1 dado-contacto dado-contacto-1' },
+]);
+
+/* Índice dentro del grupo escalonado para cada elemento */
+const gruposEscalonados = [
+  { selector: '.diploma-tarjeta', paso: 110 },
+  { selector: '.contacto-item',   paso: 90  },
+  { selector: '.proyecto-tarjeta', paso: 120 },
+];
+const mapaDelay = new Map();
+gruposEscalonados.forEach(({ selector, paso }) => {
+  document.querySelectorAll(selector).forEach((el, i) => {
+    mapaDelay.set(el, i * paso);
+  });
+});
+
+/* Intersection Observer — revelar elementos con delay escalonado por grupo */
+const observador = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const delay = mapaDelay.get(e.target) ?? 0;
+      setTimeout(() => e.target.classList.add('visible'), delay);
+      observador.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.aparece').forEach(el => observador.observe(el));
+
+/* Nav activo según sección visible */
+const secciones = document.querySelectorAll('section[id]');
+const enlacesNav = document.querySelectorAll('.nav-enlaces a');
+window.addEventListener('scroll', () => {
+  let actual = '';
+  secciones.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 140) actual = s.id;
+  });
+  enlacesNav.forEach(a => {
+    a.classList.toggle('activo', a.getAttribute('href') === '#' + actual);
+  });
+}, { passive: true });
+
+/* Hamburger */
+const botonHamburger = document.getElementById('nav-hamburger');
+const menuMovil      = document.getElementById('nav-movil');
+botonHamburger.addEventListener('click', () => {
+  const abierto = menuMovil.classList.toggle('abierto');
+  botonHamburger.classList.toggle('abierto', abierto);
+  botonHamburger.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+});
+menuMovil.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menuMovil.classList.remove('abierto');
+    botonHamburger.classList.remove('abierto');
+    botonHamburger.setAttribute('aria-label', 'Abrir menú');
+  });
+});
+
+/* Distribución normal: SVG generado dinámicamente */
+function construirGauss() {
+  const svgEl      = document.getElementById('gauss-svg');
+  const graficoWrap = document.getElementById('gauss-grafico-wrap');
+  if (!svgEl || !graficoWrap) return;
+
+  svgEl.innerHTML = '';
+
+  const W  = graficoWrap.clientWidth  || 360;
+  const H  = graficoWrap.clientHeight || 220;
+  const pL = 20, pR = 12, pT = 14, pB = 32;
+  const anchoGrafico = W - pL - pR;
+  const altoGrafico  = H - pT - pB;
+
+  svgEl.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  const g    = x => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI);
+  const pico = g(0);
+  const tx   = x => pL + (x + 3.5) / 7 * anchoGrafico;
+  const ty   = y => pT + altoGrafico - (y / pico) * altoGrafico * 0.93;
+  const baseEjeY = pT + altoGrafico;
+
+  const ns    = 'http://www.w3.org/2000/svg';
+  const crear = (tag, attrs, txt) => {
+    const e = document.createElementNS(ns, tag);
+    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+    if (txt !== undefined) e.textContent = txt;
+    return e;
+  };
+
+  const N           = 80;
+  const coordenadas = Array.from({ length: N + 1 }, (_, i) => {
+    const x = -3.5 + i * 7 / N;
+    return [tx(x), ty(g(x))];
+  });
+
+  const puntosEnRango = (xDesde, xHasta) =>
+    coordenadas.filter((_, i) => {
+      const x = -3.5 + i * 7 / N;
+      return x >= xDesde && x <= xHasta;
+    });
+
+  const trazadoArea = (ps) =>
+    `M ${ps[0][0].toFixed(1)},${ps[0][1].toFixed(1)} ` +
+    ps.slice(1).map(p => `L ${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ') +
+    ` L ${ps[ps.length-1][0].toFixed(1)},${baseEjeY} L ${ps[0][0].toFixed(1)},${baseEjeY} Z`;
+
+  /* Bandas sombreadas */
+  svgEl.appendChild(crear('path', { d: trazadoArea(puntosEnRango(-3, 3)), fill: 'rgba(200,66,26,0.07)' }));
+  svgEl.appendChild(crear('path', { d: trazadoArea(puntosEnRango(-2, 2)), fill: 'rgba(200,66,26,0.09)' }));
+  svgEl.appendChild(crear('path', { d: trazadoArea(puntosEnRango(-1, 1)), fill: 'rgba(200,66,26,0.14)' }));
+
+  /* Barras de histograma */
+  const BARRAS = 28;
+  const anchoBarra = anchoGrafico / BARRAS;
+  for (let i = 0; i < BARRAS; i++) {
+    const x  = -3.5 + (i + 0.5) * 7 / BARRAS;
+    const bH = (g(x) / pico) * altoGrafico * 0.88;
+    svgEl.appendChild(crear('rect', {
+      x:      (pL + i * anchoBarra + 0.5).toFixed(1),
+      y:      (baseEjeY - bH).toFixed(1),
+      width:  (anchoBarra - 1).toFixed(1),
+      height: bH.toFixed(1),
+      fill: 'rgba(200,66,26,0.13)', rx: '1.5'
+    }));
+  }
+
+  /* Líneas verticales ±1σ, ±2σ */
+  [-2, -1, 1, 2].forEach(s => {
+    svgEl.appendChild(crear('line', {
+      x1: tx(s).toFixed(1), y1: pT,
+      x2: tx(s).toFixed(1), y2: baseEjeY,
+      stroke: 'rgba(200,66,26,0.28)', 'stroke-width': '1', 'stroke-dasharray': '3 5'
+    }));
+  });
+
+  /* μ (centro) */
+  svgEl.appendChild(crear('line', {
+    x1: tx(0).toFixed(1), y1: pT + 4,
+    x2: tx(0).toFixed(1), y2: baseEjeY,
+    stroke: 'rgba(200,66,26,0.45)', 'stroke-width': '1', 'stroke-dasharray': '3 4'
+  }));
+
+  /* Eje X */
+  svgEl.appendChild(crear('line', {
+    x1: pL - 4, y1: baseEjeY, x2: W - pR + 4, y2: baseEjeY,
+    stroke: 'rgba(200,66,26,0.35)', 'stroke-width': '1'
+  }));
+  svgEl.appendChild(crear('polyline', {
+    points: `${W-pR-1},${baseEjeY-3} ${W-pR+4},${baseEjeY} ${W-pR-1},${baseEjeY+3}`,
+    fill: 'none', stroke: 'rgba(200,66,26,0.35)', 'stroke-width': '1'
+  }));
+
+  /* Etiquetas del eje */
+  const etiquetasEje = [[-3,'-3σ'],[-2,'-2σ'],[-1,'-1σ'],[0,'μ'],[1,'+1σ'],[2,'+2σ'],[3,'+3σ']];
+  etiquetasEje.forEach(([s, t]) => {
+    svgEl.appendChild(crear('text', {
+      x: tx(s).toFixed(1), y: baseEjeY + 18,
+      'text-anchor': 'middle',
+      'font-family': 'Space Mono, monospace',
+      'font-size': Math.max(8, Math.round(W / 46)),
+      fill: s === 0 ? 'rgba(200,66,26,0.9)' : 'rgba(200,66,26,0.55)'
+    }, t));
+  });
+
+  /* Curva de la campana (animada) */
+  const trazadoCurva = coordenadas.map((p, i) =>
+    (i === 0 ? 'M ' : 'L ') + `${p[0].toFixed(1)},${p[1].toFixed(1)}`
+  ).join(' ');
+
+  const curvaCampana = crear('path', {
+    d: trazadoCurva, fill: 'none',
+    stroke: 'rgba(200,66,26,0.85)', 'stroke-width': '2.5',
+    'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+    pathLength: '1', 'stroke-dasharray': '1', 'stroke-dashoffset': '1'
+  });
+  svgEl.appendChild(curvaCampana);
+
+  requestAnimationFrame(() => {
+    curvaCampana.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1) 0.2s';
+    curvaCampana.style.strokeDashoffset = '0';
+  });
+}
+
+window.addEventListener('load',   construirGauss);
+window.addEventListener('resize', () => { construirGauss(); });
+</script>
+
+</div><!-- /envoltura-sitio -->
+</body>
+</html>
